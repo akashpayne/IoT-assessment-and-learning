@@ -1,0 +1,12 @@
+data/LM75B.lib.i
+data/MMA7660.lib.i
+data/NTPClient.lib.i
+data/EthernetInterface.lib.i
+data/main.cpp.i
+data/FXOS8700Q.lib.i
+data/MQTT.lib.i
+data/WebSocketClient.lib.i
+data/USBDevice.lib.i
+data/mbed.bld.i
+data/mbed-rtos.lib.i
+data/C12832.lib.i

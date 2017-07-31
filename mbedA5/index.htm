@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>mbed RPC JavaScript</title>
+
+		<script language="javascript">
+
+			var Button = 0;
+			var DeviceState=new Array(3);
+			var DeviceChannel= new Array(2,3,4);	// LED
+
+			function On(device)
+			{
+				var elt = document.getElementById( "FormButton"+DeviceChannel[device])
+				if (DeviceState[device]==0)
+				{
+					DeviceState[device] = 1;
+					elt.value = "Off";
+				}
+				else
+				{
+					DeviceState[device] = 0;
+					elt.value = "On";			
+				}
+				var req = new XMLHttpRequest();
+				var cmd= "http://" + location.host + "/rpc/led" + DeviceChannel[device] +"/write+" + DeviceState[device];
+					
+				req.open("GET", cmd, true);
+				req.send("");
+			}
+		</script>
+	</head>
+	<body>
+
+		<center>
+			<h1>mbed RPC JavaScript</h1>
+		</center>
+
+		<p>RPC examples:</p>
+		<p>http://192.168.1.10/rpc/led4/write 0</p>
+		<p>http://192.168.1.10/rpc/led2/write 1</p>
+
+		<form name="Form" action="#">
+			<p>
+			LED 2:
+			<input type="button" value="On" id="FormButton2" onclick="On(0)">
+			</p>
+			<p>
+			LED 3:
+			<input type="button" value="On" id="FormButton3" onclick="On(1)">
+			</p>
+			<p>
+			LED 4:
+			<input type="button" value="On" id="FormButton4" onclick="On(2)">
+			</p>
+			<br>
+		</form>
+	</body>
+</html>
